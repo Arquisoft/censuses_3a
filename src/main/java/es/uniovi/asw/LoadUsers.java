@@ -1,20 +1,14 @@
 package es.uniovi.asw;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
 import es.uniovi.asw.model.Voter;
+import es.uniovi.asw.parser.ExcelParser;
+import es.uniovi.asw.parser.Parser;
+import es.uniovi.asw.parser.TxtParser;
 
 /**
  * Main application
@@ -24,70 +18,45 @@ import es.uniovi.asw.model.Voter;
  */
 public class LoadUsers {
 	
+	@SuppressWarnings("unused")
 	private List<Voter> voters;
 
-	public static void main(String... args) throws IOException {
+	public static void main(String... args) {
 		LoadUsers runner = new LoadUsers();
-		System.out.print("Introduzca el nombre del fichero:\n> ");
-		String fichero = new BufferedReader(
-				new InputStreamReader(System.in)).readLine();
-		try{
-			runner.run(fichero);
-		}catch(RuntimeException re){
-			System.out.println(re.getMessage());
+		try {
+			runner.run();
+		} catch (IOException e) {
+			System.out.println( e.getMessage() );
 		}
 	}
 	
-	void run(String... args) {
-		try {
-			loadUsers(args[0]);
-		} catch (IOException fnfe) {
-			throw new RuntimeException("No se encuentra el fichero especificado");
-		} 
-	}
-	
-	/**
-	 * Método que permite cargar los datos de los votantes de un censo
-	 * 
-	 * @param fichero - Nombre del fichero del que cargar datos
-	 * @return - Lista con los votantes de un censo, cargados con sus datos
-	 * @throws IOException
-	 */
-	public List<Voter> loadUsers( String fichero ) throws IOException {
-		voters = new ArrayList<Voter>();
-		FileInputStream file = new FileInputStream( new File( fichero ) );
+	void run() throws IOException{
 		
-		//Obtenemos la hoja de votantes del censo
-		XSSFWorkbook listaVotantes = new XSSFWorkbook( file ); 
+		Parser parser = null;
 		
-		 //Obtenemos la primera hoja del libro excel
-		XSSFSheet hoja = listaVotantes.getSheetAt(0);
+		System.out.print("Introduzca la extensión del fichero [excel/txt]:\n> ");
+		String extension = new BufferedReader( new InputStreamReader(System.in) ).readLine();
 		
-		//Iteramos sobre cada fila de la primera hoja
-		Iterator<Row> rowIterator = hoja.iterator(); 
-	    rowIterator.next();
-	    while( rowIterator.hasNext() ) {
-	        Row row = rowIterator.next();
-	        
-	        //Para cada fila, iteramos a través de cada una de sus columnas
-	        Iterator<Cell> columnas = row.cellIterator(); 
-	        loadDataVoter( columnas ); //Cargamos los datos del votante
-	    }
-	    listaVotantes.close();
-		return voters;
-	}
-
-
-	private void loadDataVoter( Iterator<Cell> columnas ) {
-		String nombre, dni;
-		int pollingStationCode, table;
+		System.out.print("Introduzca el nombre del fichero:\n> ");
+		String fichero = new BufferedReader( new InputStreamReader(System.in) ).readLine();
 		
-		nombre = columnas.next().getStringCellValue();
-		dni = columnas.next().getStringCellValue();
-		pollingStationCode = (int) columnas.next().getNumericCellValue();
-		table = ( int ) columnas.next().getNumericCellValue();
-		voters.add( 
-				new Voter(nombre, nombre.replaceAll("\\s+",""), dni, 
-						pollingStationCode, table ) );
+		if(extension.equals("excel")){
+			parser = new ExcelParser();
+		}else if(extension.equals("txt")){
+			parser = new TxtParser();
+		}else{
+			System.out.println("Extensión no válida");
+			run();
+		}
+		try{
+			voters = parser.loadUsers(fichero);
+			
+		}catch( IllegalArgumentException iae ){
+			System.out.println( iae.getMessage() );
+			run();
+		}
+		
+		System.out.println("CARGA DE DATOS CORRECTA");
+		new BufferedReader( new InputStreamReader(System.in) ).readLine();
 	}
 }

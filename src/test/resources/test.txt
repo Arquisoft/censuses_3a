@@ -1,0 +1,4 @@
+Nombre	NIF	Colegio	Mesa
+Juan Torres Pardo	90500084Y	234	2
+Luis López Fernando	19160962F	345	2
+Ana Torres Pardo	09940449X	456	3
