@@ -22,6 +22,41 @@
 			<version>1.2.17</version>
 		</dependency>
 
+		<!-- Hibernate annotations -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-annotations</artifactId>
+			<version>3.5.6-Final</version>
+		</dependency>
+
+		<!-- Hibernate Core ORM Functionality -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>5.0.7.Final</version>
+		</dependency>
+
+		<!-- Hibernate ORM Testing -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-testing</artifactId>
+			<version>5.0.7.Final</version>
+		</dependency>
+
+		<!-- Hibernate JPA Support -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>5.0.7.Final</version>
+		</dependency>
+
+		<!-- HSQLDB -->
+		<dependency>
+			<groupId>hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<version>1.8.0.10</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
@@ -33,19 +68,19 @@
 			<artifactId>commons-cli</artifactId>
 			<version>1.3</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi</artifactId>
 			<version>3.13</version>
 		</dependency>
-		
-<dependency>
-  <groupId>org.assertj</groupId>
-  <artifactId>assertj-core</artifactId>
-  <version>3.3.0</version>
-  <scope>test</scope>
-</dependency>
+
+		<dependency>
+			<groupId>org.assertj</groupId>
+			<artifactId>assertj-core</artifactId>
+			<version>3.3.0</version>
+			<scope>test</scope>
+		</dependency>
 
 		<dependency>
 			<groupId>org.assertj</groupId>
@@ -86,7 +121,7 @@
 			<artifactId>poi</artifactId>
 			<version>3.13</version>
 		</dependency>
-		
+
 		<!--Apache POI -->
 		<dependency>
 			<groupId>org.apache.poi</groupId>
