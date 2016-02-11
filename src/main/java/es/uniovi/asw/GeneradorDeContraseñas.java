@@ -1,3 +1,4 @@
+package es.uniovi.asw;
 public class GenerarContraseña {
 	public static String NUMEROS = "0123456789";
 
