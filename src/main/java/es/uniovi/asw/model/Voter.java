@@ -1,5 +1,6 @@
 package es.uniovi.asw.model;
 
+import javax.persistence.Table;
 
 /**
  * @author Dario Rodríguez García (@dariorg on GitHub)
@@ -9,7 +10,8 @@ package es.uniovi.asw.model;
  * Clase POJO del modelo de dominio que recoge los datos de los ciudadanos censados así como
  * el colegio electoral/mesa en el que emitir su voto.
  * 
- */
+ *///CrudRepository
+@Table( name = "VOTER" )
 public class Voter {
 	
 	private String nombre;
