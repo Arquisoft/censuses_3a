@@ -1,23 +1,24 @@
-package es.uniovi.asw;
+package es.uniovi.asw.password;
+
 public class GenerarContraseña {
+	
 	public static String NUMEROS = "0123456789";
 
 	public static String MAYUSCULAS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 	public static String MINUSCULAS = "abcdefghijklmnopqrstuvwxyz";
 
-	public static String ESPECIALES = "ñÑ";
 
 	public static String getPassword() {
 		return getPassword(8);
 	}
 
 	public static String getPassword(int length) {
-		return getPassword(NUMEROS + MAYUSCULAS + MINUSCULAS + ESPECIALES,
+		return getPassword(NUMEROS + MAYUSCULAS + MINUSCULAS,
 				length);
 	}
 
-	public static String getPassword(String key, int length) {
+	private static String getPassword(String key, int length) {
 		String pswd = "";
 
 		for (int i = 0; i < length; i++) {
@@ -25,12 +26,5 @@ public class GenerarContraseña {
 		}
 
 		return pswd;
-
 	}
-
-	public static void main(String[] args) {
-		System.out.println(getPassword());
-
-	}
-
 }

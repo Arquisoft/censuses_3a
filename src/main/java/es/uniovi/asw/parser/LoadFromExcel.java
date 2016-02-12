@@ -69,7 +69,7 @@ public class LoadFromExcel {
 		pollingStationCode = (int) columnas.next().getNumericCellValue();
 		table = ( int ) columnas.next().getNumericCellValue();
 		voters.add( 
-				new Voter(nombre, nombre.replaceAll("\\s+",""), dni, 
+				new Voter(nombre, nombre.replaceAll("\\s+",""), null, dni, 
 						pollingStationCode, table ) );
 	}
 	

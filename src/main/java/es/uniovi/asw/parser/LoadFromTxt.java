@@ -32,7 +32,7 @@ public class LoadFromTxt {
 
 			if(i > 0){
 				campos = line.split("\t");
-				voters.add(new Voter(campos[0], campos[0].replaceAll("\\s+",""), campos[1], 
+				voters.add(new Voter(campos[0], campos[0].replaceAll("\\s+",""), null, campos[1], 
 						new Integer(campos[2]), new Integer(campos[3])));   
 			}
 			i++;

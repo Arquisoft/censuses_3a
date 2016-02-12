@@ -1,18 +1,26 @@
 package es.uniovi.asw.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
  * @author Dario Rodríguez García (@dariorg on GitHub)
  * 
- * @version 2016.x.x 
+ * @version 2016.02.11 
  *
  * Clase POJO del modelo de dominio que recoge los datos de los ciudadanos censados así como
  * el colegio electoral/mesa en el que emitir su voto.
  * 
- *///CrudRepository
+ */
+@Entity
 @Table( name = "VOTER" )
 public class Voter {
+	
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 	
 	private String nombre;
 	private String email;
@@ -21,17 +29,20 @@ public class Voter {
 	
 	//Polling station
 	private int pollingStationCode;
-	private int table;
+	private int mesa;
 	
+	public Voter(){
+		
+	}
 	
-	public Voter(String nombre, String email, String nif, int pollingStationCode, int table) {
+	public Voter(String nombre, String email, String password, String nif, int pollingStationCode, int mesa) {
 		this.nombre = nombre;
 		this.email = email;
+		this.password = password;
 		this.nif = nif;
 		this.pollingStationCode = pollingStationCode;
-		this.table = table;
+		this.mesa = mesa;
 	}
-
 
 	public String getEmail() {
 		return email;
@@ -73,20 +84,28 @@ public class Voter {
 	}
 	
 	
-	public int getTable() {
-		return table;
+	public int getMesa() {
+		return mesa;
 	}
 	
 	
-	public void setTable(int table) {
-		this.table = table;
+	public void setMesa(int mesa) {
+		this.mesa = mesa;
 	}
 
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public void setNif(String nif) {
+		this.nif = nif;
+	}
 
 	@Override
 	public String toString() {
 		return "Voter [nombre=" + nombre + ", email=" + email + ", nif=" + nif + ", password=" + password
-				+ ", pollingStationCode=" + pollingStationCode + ", table=" + table + "]";
+				+ ", pollingStationCode=" + pollingStationCode + ", mesa=" + mesa + "]";
 	}
 	
 
