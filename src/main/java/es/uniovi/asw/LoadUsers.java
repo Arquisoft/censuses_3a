@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import es.uniovi.asw.input.Input;
+import es.uniovi.asw.letter.GenerarateLetters;
 import es.uniovi.asw.model.Voter;
 import es.uniovi.asw.parser.ExcelParser;
 import es.uniovi.asw.parser.Parser;
@@ -35,15 +36,16 @@ public class LoadUsers {
 	public CommandLineRunner load(VoterRepository repository) {
 		return (args) -> {
 			Parser parser;
-			if(args[1].equals("x")){ 
+			if( args[1].equals("x") ){ 
 				parser = new ExcelParser();
 			} else { 
 				parser = new TxtParser(); }
 			voters = parser.loadUsers( args[0] );
-			for(Voter voter : voters){
+			for( Voter voter : voters ){
 				voter.setPassword(GenerarContraseña.getPassword(8));
 				repository.save(voter);
 			}
+			GenerarateLetters.generateLetter(args[2], voters);
 		};
 	}
 }

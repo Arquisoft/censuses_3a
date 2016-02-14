@@ -95,7 +95,14 @@
 			<artifactId>poi-ooxml</artifactId>
 			<version>3.13</version>
 		</dependency>
-
+		
+		<!-- Docx4j -->
+		<dependency>
+			<groupId>org.docx4j</groupId>
+			<artifactId>docx4j</artifactId>
+			<version>3.2.2</version>
+		</dependency>
+		
 	</dependencies>
 
 	<build>

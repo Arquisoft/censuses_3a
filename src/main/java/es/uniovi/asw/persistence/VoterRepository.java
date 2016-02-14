@@ -13,6 +13,6 @@ import es.uniovi.asw.model.Voter;
 public interface VoterRepository extends CrudRepository<Voter, Long> {
 	
 	@SuppressWarnings("unchecked")
-	public Voter save(Voter voter);
+	Voter save(Voter voter);
 
 }

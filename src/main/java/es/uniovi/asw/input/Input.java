@@ -19,26 +19,35 @@ public class Input {
 	 * @param args
 	 */
 	public void getDataInput(String...args){
-		Options options = options();
+		Options options = fileOptions();
 		CommandLineParser p = new DefaultParser();
 		try {
 			CommandLine cmd = p.parse( options, args );
 			if(cmd.hasOption("x")){
 				args[0] = cmd.getOptionValue("x"); args[1] = "x";
-			}else if(cmd.hasOption("txt")){
-				args[0] = cmd.getOptionValue("txt"); args[1] = "txt";
+				System.out.println("Entra por excel");
+			}else if(cmd.hasOption("t")){
+				args[0] = cmd.getOptionValue("t"); args[1] = "t";
+				System.out.println("Entra por txt");
 			}else{
-				System.out.println("Opción no válida");
+				throw new RuntimeException("Formato de entrada no válido");
 			}
+			getOutputFormat( args );
 		}catch (ParseException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	private Options options() {
+	public void getOutputFormat(String...args){
+		if(! args[2].equals("txt") && ! args[2].equals("word")){
+			throw new RuntimeException("Se debe escoger el formato de salida de las cartas");
+		}
+	}
+	
+	private Options fileOptions() {
 		Options options = new Options();
 		options.addOption("x", true, "Cargar datos a partir de un fichero Excel (xlsx)");
-		options.addOption("txt", true, "Cargar datos a partir de un fichero de texto (txt)");
+		options.addOption("t", true, "Cargar datos a partir de un fichero de texto (txt)");
 		return options;
 	}
 
