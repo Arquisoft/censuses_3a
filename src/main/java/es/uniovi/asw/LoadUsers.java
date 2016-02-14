@@ -13,7 +13,7 @@ import es.uniovi.asw.model.Voter;
 import es.uniovi.asw.parser.ExcelParser;
 import es.uniovi.asw.parser.Parser;
 import es.uniovi.asw.parser.TxtParser;
-import es.uniovi.asw.password.GenerarContraseña;
+import es.uniovi.asw.password.GenerarClave;
 import es.uniovi.asw.persistence.VoterRepository;
 
 /**
@@ -42,7 +42,7 @@ public class LoadUsers {
 				parser = new TxtParser(); }
 			voters = parser.loadUsers( args[0] );
 			for( Voter voter : voters ){
-				voter.setPassword(GenerarContraseña.getPassword(8));
+				voter.setPassword(GenerarClave.getPassword(8));
 				repository.save(voter);
 			}
 			GenerarateLetters.generateLetter(args[2], voters);

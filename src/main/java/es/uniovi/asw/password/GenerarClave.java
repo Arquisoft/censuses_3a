@@ -1,6 +1,6 @@
 package es.uniovi.asw.password;
 
-public class GenerarContraseña {
+public class GenerarClave {
 	
 	public static String NUMEROS = "0123456789";
 
