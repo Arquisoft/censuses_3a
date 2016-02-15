@@ -32,9 +32,7 @@ public class TxtLetter {
 				+", a continuación se le comunican los datos que le permitirán emitir su voto de manera electrónica:\n");
 		writer.println("USUARIO: " + voter.getEmail() + "\nCONTRASEÑA: " + voter.getPassword() + "\n");
 		writer.println("DATOS DEL CENSO:\n" + "COLEGIO ELECTORAL: " 
-				+ voter.getPollingStationCode() 
-				+ "      MESA: "
-				+ voter.getMesa());
+				+ voter.getPollingStationCode());
 		writer.println("NOTA: Los datos mostrados arriba son personales."
 				+ " Por seguridad no se los comunique a terceras personas");
 		writer.println("-----------------------------------------------");

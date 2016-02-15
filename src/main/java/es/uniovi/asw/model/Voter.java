@@ -29,19 +29,17 @@ public class Voter {
 	
 	//Polling station
 	private int pollingStationCode;
-	private int mesa;
 	
 	public Voter(){
 		
 	}
 	
-	public Voter(String nombre, String email, String password, String nif, int pollingStationCode, int mesa) {
+	public Voter(String nombre, String email, String password, String nif, int pollingStationCode) {
 		this.nombre = nombre;
 		this.email = email;
 		this.password = password;
 		this.nif = nif;
 		this.pollingStationCode = pollingStationCode;
-		this.mesa = mesa;
 	}
 
 	public String getEmail() {
@@ -84,14 +82,6 @@ public class Voter {
 	}
 	
 	
-	public int getMesa() {
-		return mesa;
-	}
-	
-	
-	public void setMesa(int mesa) {
-		this.mesa = mesa;
-	}
 
 
 	public void setNombre(String nombre) {
@@ -105,7 +95,7 @@ public class Voter {
 	@Override
 	public String toString() {
 		return "Voter [nombre=" + nombre + ", email=" + email + ", nif=" + nif + ", password=" + password
-				+ ", pollingStationCode=" + pollingStationCode + ", mesa=" + mesa + "]";
+				+ ", pollingStationCode=" + pollingStationCode + "]";
 	}
 	
 

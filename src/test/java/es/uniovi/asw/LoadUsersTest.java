@@ -46,19 +46,19 @@ public class LoadUsersTest {
 		assertEquals("Juan Torres Pardo", voter.getNombre());
 		assertEquals("90500084Y", voter.getNif());
 		assertEquals(234, voter.getPollingStationCode());
-		assertEquals(2, voter.getMesa());
+		assertEquals("jtp@hotmail.com", voter.getEmail());
 		
 		voter = voters.get(1); //Segundo ciudadano
 		assertEquals("Luis López Fernando", voter.getNombre());
 		assertEquals("19160962F", voter.getNif());
 		assertEquals(345, voter.getPollingStationCode());
-		assertEquals(2, voter.getMesa());
+		assertEquals("llp@gmail.com", voter.getEmail());
 		
 		voter = voters.get(2); //Segundo ciudadano
 		assertEquals("Ana Torres Pardo", voter.getNombre());
 		assertEquals("09940449X", voter.getNif());
 		assertEquals(456, voter.getPollingStationCode());
-		assertEquals(3, voter.getMesa());
+		assertEquals("atp@yahoo.com", voter.getEmail());
 	}
 	
 	/**
@@ -93,19 +93,19 @@ public class LoadUsersTest {
 		assertEquals("Juan Torres Pardo", voter.getNombre());
 		assertEquals("90500084Y", voter.getNif());
 		assertEquals(234, voter.getPollingStationCode());
-		assertEquals(2, voter.getMesa());
+		assertEquals("jtp@hotmail.com", voter.getEmail());
 		
 		voter = voters.get(1); //Segundo ciudadano
 		assertEquals(true, voter.getNombre()
 				.contains("Luis"));
 		assertEquals("19160962F", voter.getNif());
 		assertEquals(345, voter.getPollingStationCode());
-		assertEquals(2, voter.getMesa());
+		assertEquals("llp@gmail.com", voter.getEmail());
 		
 		voter = voters.get(2); //Segundo ciudadano
 		assertEquals("Ana Torres Pardo", voter.getNombre());
 		assertEquals("09940449X", voter.getNif());
 		assertEquals(456, voter.getPollingStationCode());
-		assertEquals(3, voter.getMesa());
+		assertEquals("atp@yahoo.com", voter.getEmail());
 	}
 }

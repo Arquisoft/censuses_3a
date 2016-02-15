@@ -61,16 +61,16 @@ public class LoadFromExcel {
 
 
 	private void loadDataVoter( Iterator<Cell> columnas, List<Voter> voters ) {
-		String nombre, dni;
-		int pollingStationCode, table;
+		String nombre, dni, email;
+		int pollingStationCode;
 		
 		nombre = columnas.next().getStringCellValue();
+		email = columnas.next().getStringCellValue();
 		dni = columnas.next().getStringCellValue();
 		pollingStationCode = (int) columnas.next().getNumericCellValue();
-		table = ( int ) columnas.next().getNumericCellValue();
 		voters.add( 
-				new Voter(nombre, nombre.replaceAll("\\s+",""), null, dni, 
-						pollingStationCode, table ) );
+				new Voter(nombre, email, null, dni, 
+						pollingStationCode) );
 	}
 	
 	private FileInputStream assertExistFile(String fichero) {
