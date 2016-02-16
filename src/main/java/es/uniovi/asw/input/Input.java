@@ -25,10 +25,8 @@ public class Input {
 			CommandLine cmd = p.parse( options, args );
 			if(cmd.hasOption("x")){
 				args[0] = cmd.getOptionValue("x"); args[1] = "x";
-				System.out.println("Entra por excel");
 			}else if(cmd.hasOption("t")){
 				args[0] = cmd.getOptionValue("t"); args[1] = "t";
-				System.out.println("Entra por txt");
 			}else{
 				throw new RuntimeException("Formato de entrada no válido");
 			}

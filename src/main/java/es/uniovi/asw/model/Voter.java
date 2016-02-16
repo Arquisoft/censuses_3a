@@ -80,8 +80,6 @@ public class Voter {
 	public void setPollingStationCode(int pollingStationCode) {
 		this.pollingStationCode = pollingStationCode;
 	}
-	
-	
 
 
 	public void setNombre(String nombre) {

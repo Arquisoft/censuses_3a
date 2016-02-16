@@ -22,7 +22,7 @@ public class TxtLetter {
 	 * @throws UnsupportedEncodingException
 	 */
 	public void generateLetter( Voter voter ) throws FileNotFoundException, UnsupportedEncodingException{
-		PrintWriter writer = new PrintWriter("src/main/resources/wordletter/" + voter.getNif() + ".txt", "UTF-8");
+		PrintWriter writer = new PrintWriter("src/main/resources/txtletter/" + voter.getNif() + ".txt", "UTF-8");
 		writer.println("DATOS DE CENSO ELECTORAL PARA VOTO ELECTRÓNICO");
 		writer.println("-----------------------------------------------");
 		writer.println("Estimado " 
