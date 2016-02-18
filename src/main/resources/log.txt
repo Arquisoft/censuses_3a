@@ -1,1 +1,16 @@
 [2016/02/16 17:20:41] FILE: src/test/resources/test.txt EXCEPTION TRACE: DNI 09940449X duplicado
+[2016/02/18 09:16:22] FILE: src/test/resources/test.txt EXCEPTION TRACE: DNI 09940449X duplicado
+[2016/02/18 09:31:07] FILE: src/test/resources/test.txt EXCEPTION TRACE: DNI 09940449X duplicado
+[2016/02/18 09:41:56] FILE: src/test/resources/test.txt EXCEPTION TRACE: DNI 09940449X duplicado
+[2016/02/18 09:50:52] FILE: src/test/resources/test.txt EXCEPTION TRACE: DNI 09940449X duplicado
+[2016/02/18 09:50:52] FILE: src/test/resources/test.txt EXCEPTION TRACE: DNI 09940449X duplicado
+[2016/02/18 10:01:18] FILE: src/test/resources/test.txt EXCEPTION TRACE: DNI 09940449X duplicado
+[2016/02/18 10:03:08] FILE: src/test/resources/test.txt EXCEPTION TRACE: DNI 09940449X duplicado
+[2016/02/18 10:05:59] FILE: src/test/resources/test.txt EXCEPTION TRACE: DNI 09940449X duplicado
+[2016/02/18 10:11:37] FILE: src/test/resources/test.txt EXCEPTION TRACE: DNI 09940449X duplicado
+[2016/02/18 10:12:51] FILE: src/test/resources/test.txt EXCEPTION TRACE: DNI 09940449X duplicado
+[2016/02/18 10:12:56] FILE: fichero EXCEPTION TRACE: could not execute statement; SQL [n/a]; constraint [nif]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+[2016/02/18 10:12:57] FILE: fichero EXCEPTION TRACE: could not execute statement; SQL [n/a]; constraint [nif]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+[2016/02/18 10:12:57] FILE: fichero EXCEPTION TRACE: could not execute statement; SQL [n/a]; constraint [nif]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+[2016/02/18 10:15:10] FILE: src/test/resources/test.txt EXCEPTION TRACE: DNI 09940449X duplicado
+[2016/02/18 10:15:30] FILE: src/test/resources/test.txt EXCEPTION TRACE: DNI 09940449X duplicado

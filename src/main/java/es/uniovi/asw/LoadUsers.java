@@ -2,6 +2,8 @@ package es.uniovi.asw;
 
 import java.util.List;
 
+import org.hibernate.exception.ConstraintViolationException;
+import org.jasypt.util.password.StrongPasswordEncryptor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,6 +11,7 @@ import org.springframework.context.annotation.Bean;
 
 import es.uniovi.asw.input.Input;
 import es.uniovi.asw.letter.GenerarateLetters;
+import es.uniovi.asw.log.Logger;
 import es.uniovi.asw.model.Voter;
 import es.uniovi.asw.parser.ExcelParser;
 import es.uniovi.asw.parser.Parser;
@@ -20,6 +23,8 @@ import es.uniovi.asw.persistence.VoterRepository;
  * Main application
  * 
  * @author Darío Rodríguez García (@dariorg)
+ * @author Héctor Álvarez Ibáñez (@vodkaneitor93)
+ * @author Jorge Vila Suárez (@jorgevilasuarez)
  *
  */
 @SpringBootApplication
@@ -43,9 +48,24 @@ public class LoadUsers {
 			voters = parser.loadUsers( args[0] );
 			for( Voter voter : voters ){
 				voter.setPassword(GenerarClave.getPassword(8));
-				repository.save(voter);
 			}
 			GenerarateLetters.generateLetter(args[2], voters);
+			for( Voter voter : voters ){
+				StrongPasswordEncryptor e = new StrongPasswordEncryptor();
+				voter.setPassword(e.encryptPassword(voter.getPassword()));
+				saveVoter(repository, voter);
+			}
 		};
+	}
+
+	private void saveVoter(VoterRepository repository, Voter voter) {
+		try{
+			repository.save(voter);
+		}
+		catch(ConstraintViolationException error){
+			Logger.getInstance().writeReport("fichero", 
+					new IllegalStateException(
+							"Ya existe un registro con los mismos datos almacenados"));
+		}
 	}
 }
