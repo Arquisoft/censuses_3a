@@ -1,4 +1,4 @@
-package es.uniovi.asw.letter;
+package es.uniovi.asw.parser.letter;
 
 import es.uniovi.asw.model.Voter;
 

@@ -1,4 +1,4 @@
-package es.uniovi.asw.letter;
+package es.uniovi.asw.parser.letter;
 
 import org.docx4j.openpackaging.exceptions.Docx4JException;
 

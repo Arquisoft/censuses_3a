@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import es.uniovi.asw.log.Validation;
 import es.uniovi.asw.model.Voter;
 
 /**
@@ -30,14 +29,13 @@ public class LoadFromTxt {
 		String [] campos;
 		int i = 0;
 		Voter voter = null;
-		Validation validation = new Validation();
 		while((line = in.readLine()) != null){
 
 			if(i > 0){
 				campos = line.split("\t");
 				voter = new Voter(campos[0], campos[1], null, campos[2], 
 						new Integer(campos[3]));
-				validation.validateAll(fichero, voter, voters);
+				voters.add(voter);
 			}
 			i++;
 			

@@ -1,4 +1,4 @@
-package es.uniovi.asw.letter;
+package es.uniovi.asw.parser.letter;
 
 import java.util.List;
 

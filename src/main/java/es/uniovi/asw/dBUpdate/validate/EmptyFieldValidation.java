@@ -1,4 +1,4 @@
-package es.uniovi.asw.log;
+package es.uniovi.asw.dBUpdate.validate;
 
 import es.uniovi.asw.model.Voter;
 
@@ -11,8 +11,8 @@ import es.uniovi.asw.model.Voter;
 public class EmptyFieldValidation implements Validate{
 
 	@Override
-	public void validation(Voter voter, String field) {
-		if(field.trim().length() == 0){
+	public void validation( Voter voter ) {
+		if(voter.getNif().trim().length() == 0){
 			throw new IllegalStateException("Existen campos vacíos para el votante: "
 					+ voter.getNombre());
 		}

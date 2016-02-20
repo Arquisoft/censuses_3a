@@ -13,7 +13,6 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import es.uniovi.asw.log.Validation;
 import es.uniovi.asw.model.Voter;
 
 /**
@@ -64,14 +63,13 @@ public class LoadFromExcel {
 	private void loadDataVoter( String file, Iterator<Cell> columnas, List<Voter> voters ) {
 		String nombre, dni, email;
 		int pollingStationCode;
-		Validation validation = new Validation();
 		
 		nombre = columnas.next().getStringCellValue();
 		email = columnas.next().getStringCellValue();
 		dni = columnas.next().getStringCellValue();
 		pollingStationCode = (int) columnas.next().getNumericCellValue();
 		Voter voter = new Voter(nombre, email, null, dni, pollingStationCode);
-		validation.validateAll(file, voter, voters);
+		voters.add(voter);
 	}
 	
 	private FileInputStream assertExistFile(String fichero) {

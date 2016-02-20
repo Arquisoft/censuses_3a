@@ -1,4 +1,4 @@
-package es.uniovi.asw.log;
+package es.uniovi.asw.dBUpdate.validate;
 
 import es.uniovi.asw.model.Voter;
 
@@ -12,6 +12,6 @@ import es.uniovi.asw.model.Voter;
  */
 public interface Validate {
 	
-	void validation( Voter voter, String field ) throws IllegalStateException;
+	void validation( Voter voter ) throws IllegalStateException;
 
 }

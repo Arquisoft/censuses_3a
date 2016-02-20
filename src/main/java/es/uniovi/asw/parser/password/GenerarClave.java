@@ -1,4 +1,4 @@
-package es.uniovi.asw.password;
+package es.uniovi.asw.parser.password;
 
 public class GenerarClave {
 	

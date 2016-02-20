@@ -1,4 +1,4 @@
-package es.uniovi.asw.persistence;
+package es.uniovi.asw.dBUpdate;
 
 import org.springframework.data.repository.CrudRepository;
 

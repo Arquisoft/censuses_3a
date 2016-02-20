@@ -1,4 +1,4 @@
-package es.uniovi.asw.log;
+package es.uniovi.asw.dBUpdate.validate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,10 +16,11 @@ public class DuplicateFieldValidation implements Validate{
 	private List<String> fields = new ArrayList<String>();
 
 	@Override
-	public void validation( Voter voter, String field ) {
-		if( fields.contains( field ) ){
-			throw new IllegalStateException("DNI " + field + " duplicado");
+	public void validation( Voter voter ) {
+		if( fields.contains( voter.getNif() ) ){
+			throw new IllegalStateException("DNI " + voter.getNif() + " duplicado");
+		}else{
+			fields.add( voter.getNif() );
 		}
-		fields.add(field);
 	}	
 }
