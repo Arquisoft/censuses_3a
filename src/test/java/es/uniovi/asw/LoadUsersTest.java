@@ -71,11 +71,11 @@ public class LoadUsersTest {
 	public void testNumeroVotantesFicheroTxt() throws IOException {
 		LoadFromTxt txt = new LoadFromTxt();
 		List<Voter> voters = txt.loadUsers( "src/test/resources/test.txt" );
-		//Comprobamos numero de votantes de la hoja Excel (son 4 filas (1 de cabecera y 3 de votantes))
-		assertFalse(voters.size() == 4);
+		//Comprobamos numero de votantes de la hoja Excel (son 4 filas (1 de cabecera y 4 de votantes))
+		assertFalse(voters.size() == 5);
 		
 		//Comprobamos numero de votantes de la hoja Excel
-		assertEquals(3, voters.size()); 
+		assertEquals(4, voters.size()); 
 	}
 	
 	
@@ -106,6 +106,6 @@ public class LoadUsersTest {
 		assertEquals("Ana Torres Pardo", voter.getNombre());
 		assertEquals("09940449X", voter.getNif());
 		assertEquals(456, voter.getPollingStationCode());
-		assertEquals("atp@yahoo.com", voter.getEmail());
+		assertEquals("atpyahoo.com", voter.getEmail());
 	}
 }
