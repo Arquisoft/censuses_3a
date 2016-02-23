@@ -1,7 +1,5 @@
 package es.uniovi.asw.parser.letter;
 
-import java.util.List;
-
 import es.uniovi.asw.model.Voter;
 
 /**
@@ -9,7 +7,7 @@ import es.uniovi.asw.model.Voter;
  * @version 2016.02.14
  *
  */
-public class GenerarateLetters {
+public class GenerarateLetter {
 	
 	/**
 	 * Método que permite generar las cartas con los datos del censo para
@@ -18,16 +16,14 @@ public class GenerarateLetters {
 	 * @param format, txt o word
 	 * @param voters, lista de votantes de un censo
 	 */
-	public static void generateLetter( String format, List<Voter> voters ){
+	public static void generateLetter( String format, Voter voter ){
 		WriteLetter formatLetter;
 		if(format.equals("txt")){
 			formatLetter = new WriteTxtLetter();
 		}else{
 			formatLetter = new WriteWordLetter();
 		}
-		for(Voter voter : voters){
-			formatLetter.writeLetter(voter);
-		}
+		formatLetter.writeLetter(voter);
 	}
 
 }

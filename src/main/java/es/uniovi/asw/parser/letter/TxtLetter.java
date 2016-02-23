@@ -22,7 +22,7 @@ public class TxtLetter {
 	 * @throws UnsupportedEncodingException
 	 */
 	public void generateLetter( Voter voter ) throws FileNotFoundException, UnsupportedEncodingException{
-		PrintWriter writer = new PrintWriter("src/main/resources/txtletter/" + voter.getNif() + ".txt", "UTF-8");
+		PrintWriter writer = new PrintWriter("src/main/resources/letters/" + voter.getNif() + ".txt", "UTF-8");
 		writer.println("DATOS DE CENSO ELECTORAL PARA VOTO ELECTRÓNICO");
 		writer.println("-----------------------------------------------");
 		writer.println("Estimado " 
@@ -30,7 +30,7 @@ public class TxtLetter {
 				+ " con NIF: "
 				+ voter.getNif() 
 				+", a continuación se le comunican los datos que le permitirán emitir su voto de manera electrónica:\n");
-		writer.println("USUARIO: " + voter.getEmail() + "\nCONTRASEÑA: " + voter.getPassword() + "\n");
+		writer.println("USUARIO: " + voter.getEmail() + "\n CONTRASEÑA: " + voter.getPassword() + "\n");
 		writer.println("DATOS DEL CENSO:\n" + "COLEGIO ELECTORAL: " 
 				+ voter.getPollingStationCode());
 		writer.println("NOTA: Los datos mostrados arriba son personales."

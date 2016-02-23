@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -14,6 +15,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import es.uniovi.asw.model.Voter;
+import es.uniovi.asw.reportWriter.WreportR;
 
 /**
  * Clase que permite cargar los datos de los votantes de un fichero Excel
@@ -61,15 +63,24 @@ public class LoadFromExcel {
 
 
 	private void loadDataVoter( String file, Iterator<Cell> columnas, List<Voter> voters ) {
-		String nombre, dni, email;
+		String nombre= null, dni, email = null;
 		int pollingStationCode;
-		
-		nombre = columnas.next().getStringCellValue();
-		email = columnas.next().getStringCellValue();
-		dni = columnas.next().getStringCellValue();
-		pollingStationCode = (int) columnas.next().getNumericCellValue();
-		Voter voter = new Voter(nombre, email, null, dni, pollingStationCode);
-		voters.add(voter);
+		Voter voter = null;
+		try{
+			nombre = columnas.next().getStringCellValue();
+			email = columnas.next().getStringCellValue();
+			dni = columnas.next().getStringCellValue();
+			pollingStationCode = (int) columnas.next().getNumericCellValue();
+			voter = new Voter(nombre, email, null, dni, pollingStationCode);
+			voters.add(voter);
+		}catch(NoSuchElementException ne){
+			WreportR.getInstance()
+			.writeReport(file, 
+					new IllegalStateException("Número de campos incorrectos en fila: " + nombre + " " + email));
+		}catch(IllegalStateException | NumberFormatException ne){
+			WreportR.getInstance().writeReport(file, 
+					new IllegalStateException("El campo colegio debe ser de tipo numérico"));
+		}
 	}
 	
 	private FileInputStream assertExistFile(String fichero) {

@@ -13,14 +13,20 @@ import es.uniovi.asw.model.Voter;
  */
 public class DuplicateFieldValidation implements Validate{
 	
-	private List<String> fields = new ArrayList<String>();
+	private List<String> nifFields = new ArrayList<String>();
+	private List<String> emailFields = new ArrayList<String>();
 
 	@Override
 	public void validation( Voter voter ) {
-		if( fields.contains( voter.getNif() ) ){
+		if( nifFields.contains( voter.getNif() ) ){
 			throw new IllegalStateException("DNI " + voter.getNif() + " duplicado");
 		}else{
-			fields.add( voter.getNif() );
+			nifFields.add( voter.getNif() );
+		}
+		if( emailFields.contains( voter.getEmail() ) ){
+			throw new IllegalStateException("Email " + voter.getEmail() + " duplicado");
+		}else{
+			emailFields.add( voter.getEmail() );
 		}
 	}	
 }

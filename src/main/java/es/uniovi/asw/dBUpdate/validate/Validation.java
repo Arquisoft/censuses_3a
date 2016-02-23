@@ -19,9 +19,11 @@ public class Validation {
 	
 	public Validation(){
 		validations =   new ArrayList<Validate>();
+		validations.add( new StringFormatValidation() );
 		validations.add( new EmptyFieldValidation() );
 		validations.add( new DuplicateFieldValidation() );
 		validations.add( new EmailFieldValidation() );
+		validations.add( new NIFFieldValidation() );
 	}
 	
 	public Voter validateAll( String fichero, Voter voter ){

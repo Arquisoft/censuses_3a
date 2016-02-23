@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import es.uniovi.asw.model.Voter;
+import es.uniovi.asw.reportWriter.WreportR;
 
 /**
  * Clase que permite cargar los datos de los votantes de un fichero TXT
@@ -30,15 +31,22 @@ public class LoadFromTxt {
 		int i = 0;
 		Voter voter = null;
 		while((line = in.readLine()) != null){
-
 			if(i > 0){
 				campos = line.split("\t");
-				voter = new Voter(campos[0], campos[1], null, campos[2], 
-						new Integer(campos[3]));
-				voters.add(voter);
+				try{
+					voter = new Voter(campos[0], campos[1], null, campos[2], 
+							new Integer(campos[3]));
+					voters.add(voter);
+				}catch(ArrayIndexOutOfBoundsException ai){
+					WreportR.getInstance().writeReport(fichero, 
+							new IllegalStateException("Número de campos incorrectos en fila: " + line));
+				}catch(NumberFormatException ne){
+					WreportR.getInstance().writeReport(fichero, 
+							new IllegalStateException(
+									"El campo colegio debe ser de tipo numérico en la linea: " + line));
+				}
 			}
-			i++;
-			
+			i++;	
 		}
 		in.close();
 		return voters;

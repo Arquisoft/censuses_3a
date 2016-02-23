@@ -37,7 +37,7 @@ public class WordLetter {
 		letter.getMainDocumentPart().addStyledParagraphOfText("Subtitle", 
 				"NOTA: Los datos mostrados arriba son personales. Por seguridad no"
 				+ " se los comunique a terceras personas");
-		letter.save(new java.io.File("src/main/resources/wordletter/" + voter.getNif() + ".docx"));
+		letter.save(new java.io.File("src/main/resources/letters/" + voter.getNif() + ".docx"));
 	}
 	
 	public PPr paragraphFormat(){

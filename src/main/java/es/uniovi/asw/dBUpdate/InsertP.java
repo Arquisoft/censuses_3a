@@ -2,7 +2,6 @@ package es.uniovi.asw.dBUpdate;
 
 import java.util.List;
 
-import org.jasypt.util.password.StrongPasswordEncryptor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,7 +10,8 @@ import org.springframework.context.annotation.Bean;
 
 import es.uniovi.asw.dBUpdate.validate.Validation;
 import es.uniovi.asw.model.Voter;
-import es.uniovi.asw.parser.letter.GenerarateLetters;
+import es.uniovi.asw.parser.letter.GenerarateLetter;
+import es.uniovi.asw.parser.password.Encryptation;
 import es.uniovi.asw.reportWriter.WreportR;
 
 
@@ -42,24 +42,22 @@ public class InsertP implements Insert{
 		return (args) -> {
 			Voter v = null;
 			Validation validation = new Validation();
-			GenerarateLetters.generateLetter(args[2], voters);
+			String password = null;
 			for(Voter voter: voters){
-				encryptData(voter);
+				password = voter.getPassword();
+				Encryptation.encryptData(voter);
 				v = validation.validateAll( args[1], voter );
-				saveVoter(repository, v, args[1]);
+				saveVoter(repository, v, args[0], password, args[2]);
 			}
 		};
 	}
 
-	private void encryptData(Voter voter) {
-		StrongPasswordEncryptor e = new StrongPasswordEncryptor();
-		voter.setPassword(e.encryptPassword(voter.getPassword()));
-	}
-	
-	private void saveVoter(VoterRepository repository, Voter voter, String fichero) {
+	private void saveVoter(VoterRepository repository, Voter voter, String fichero, String password, String format) {
 		try{
 			if(voter != null){
 				repository.save(voter);
+				voter.setPassword(password);
+				GenerarateLetter.generateLetter(format, voter);
 			}
 		}catch(Exception error){
 			WreportR.getInstance().writeReport(fichero, 
