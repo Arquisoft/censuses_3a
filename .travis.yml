@@ -1,7 +1,5 @@
 language: java
 jdk:
   - oraclejdk8
-service_name: travis-ci
-repo_token: I4kmpNlWf9EqMSTbffdLf9zCNKvxKt8oP
 after_success:
   - mvn clean test jacoco:report coveralls:report
