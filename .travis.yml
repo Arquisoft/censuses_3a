@@ -3,3 +3,5 @@ jdk:
   - oraclejdk8
 service_name: travis-pro
 repo_token: I4kmpNlWf9EqMSTbffdLf9zCNKvxKt8oP
+after_success:
+  - mvn clean test jacoco:report coveralls:report
